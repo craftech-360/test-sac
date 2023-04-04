@@ -78,7 +78,7 @@ io.on('connection', (socket) => {
   })
 
   socket.on('getUrl' ,(e) => {
-    console.log(e);
+    // console.log(e);
     const imageData = e.replace(/^data:image\/\w+;base64,/, '');
     const buffer = Buffer.from(imageData, 'base64');
  
