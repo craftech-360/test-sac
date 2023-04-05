@@ -25,7 +25,7 @@ app.get('/qr', function (req, res) {
 });
 
 app.use(cors())
-const mongo_URI = 'mongodb+srv://SAC:G8BO4x3rWEDFSYqk@cluster0.btu1pyt.mongodb.net/employee' // use local one
+const mongo_URI = 'mongodb+srv://SAC:G8BO4x3rWEDFSYqk@cluster0.btu1pyt.mongodb.net/userlist' // use local one
 // const mongo_URI = 'mongodb://0.0.0.0:27017/employee'
 mongoose.connect(mongo_URI, {useNewUrlParser:true, useUnifiedTopology:true})
   .then(result => {console.log('Connected To DB')})
@@ -51,7 +51,7 @@ app.post("/upload", (req, res) => {
 io.on('connection', (socket) => {
   console.log('a user connected');
   // csvtojson()
-  // .fromFile("qr.csv")
+  // .fromFile("user.csv")
   // .then(csvData => {
   //   User.insertMany(csvData).then( () => {
   //     console.log("DONEEE");
@@ -65,13 +65,13 @@ io.on('connection', (socket) => {
     asyncCall();
   })
  
-  socket.on('getAll' ,(e) => {
+  socket.on('getAll' ,(e) => {``
     async function asyncCall() {
       const list = await User.count({ "isAttended": false })
       io.emit('count', list)
-      const result = await User.find( { "isAttended": false })
-      .skip((e-1) * 110)
-      .limit(110)
+      const result = await User.find( { "isAttended": true })
+      .skip((e-1) * 120)
+      .limit(120)
       io.emit('userList', result)
     }
     asyncCall();
@@ -91,11 +91,11 @@ io.on('connection', (socket) => {
   })
 
   socket.on('getUser' , (e) => {
-    console.log(e);
+    // console.log(e);
     async function asyncCall() {
-      // await User.updateOne({"uniquecode":e},{$set: {"isAttended":true}})
-      const result = await User.findOne( { "uniquecode": e.toLowerCase() } )
-      console.log(result);
+      await User.updateOne({"uniquecode":e},{$set: {"isAttended":true}})
+      // const result = await User.findOne( { "uniquecode": e.toLowerCase() } )
+      // console.log(result);
       io.emit('userDetails',result )
     }
     asyncCall();

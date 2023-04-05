@@ -24,12 +24,21 @@ const attendeeSchema = new Schema({
     },
     uniquecode: {
         type: String,
-        default: ""
+        required: true
     },
     company: {
         type: String,
         required: true
+    },
+    jobtitle:{
+        type:String,
+        required:true
+    },
+    shippinglookup:{
+        type: String,
+        default:''
     }
+   
 })
 
 const Attendee = mongoose.model('Attendee', attendeeSchema)

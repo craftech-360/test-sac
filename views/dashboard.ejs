@@ -98,6 +98,7 @@
                 <li class="page-item"><a class="page-link" href="#" onclick="getPage(7)">7</a></li>
                 <li class="page-item"><a class="page-link" href="#" onclick="getPage(8)">8</a></li>
                 <li class="page-item"><a class="page-link" href="#" onclick="getPage(9)">9</a></li>
+                <li class="page-item"><a class="page-link" href="#" onclick="getPage(10)">10</a></li>
             </ul>
         </nav>
     </section>
@@ -162,10 +163,11 @@
         }
 
         socket.on('userList',(e) => {
-            console.log(e);
-            document.getElementsByTagName("table")[0].innerHTML= "<tr><th>"+`#`+"</th><th>"+`Name`+"</th><th>"+`Company`+"</th><th>"+`Phone`+"</th><th>"+`Email`+"</th><th>"+`Status`+"</th><th>"+`Attended`+"</th></tr>"
+            // location.reload()
+            // console.log(e);
+            document.getElementsByTagName("table")[0].innerHTML= "<tr><th>"+`#`+"</th><th>"+`Name`+"</th><th>"+`Company`+"</th><th>"+`Jobtitle`+"</th><th>"+`Phone`+"</th><th>"+`Email`+"</th><th>"+`Status`+"</th><th>"+`Attended`+"</th></tr>"
             for (let i = 0; i < e.length; i++) {
-                document.getElementsByTagName("table")[0].innerHTML+= "<tr><td>"+(i+btn)+"</td><td>"+e[i].name+"</td><td>"+e[i].company+"</td><td>"+e[i].phone+"</td><td>"+e[i].email+"</td><td>"+e[i].status+"</td><td>"+e[i].isAttended+"</td></tr>"
+                document.getElementsByTagName("table")[0].innerHTML+= "<tr><td>"+(i+btn)+"</td><td>"+e[i].name+"</td><td>"+e[i].company+"</td><td>"+e[i].jobtitle+"</td><td>"+e[i].phone+"</td><td>"+e[i].email+"</td><td>"+e[i].status+"</td><td>"+e[i].isAttended+"</td></tr>"
         }
         })
     </script>

@@ -18,6 +18,7 @@
         body{
             font-family:circular;
         }
+        
 
     </style>
 </head>
@@ -33,10 +34,10 @@
     <img id="bg2" src="../asset/images/Qr Screen 7.png" alt=""style="display: none;" > 
 
     <!-- 3rd Screen -->
-    <button id="print" type="button"  onclick="downloadReceipt()" style="display: none;">Print</button>
+    <button id="print" type="button"  onclick="window.print()" style="display: none;">Print</button>
     <section id="myForm"style="display: none;" >
        <h5 id="name" style="text-transform:capitalize"></h5>
-       <h5 id="company"></h5>
+       <h5 id="company" style="text-transform:capitalize"></h5>
     </section>
 
     <script src="../asset/js/working.js"></script>

@@ -17,14 +17,14 @@ section{
     position: absolute; 
     color: black;
     text-align: center;
-    word-wrap: break-word
+    word-wrap: break-word;
     font-weight: bold;
     /* letter-spacing: 2px; */
 }
 h5{
     /* font-size: 20px; */
     margin: 10px;
-    
+    text-transform:capitalize
     /* line-height: 30px; */
     /* color: white; */
     /* text-shadow: 2px 2px 4px #000000; */
@@ -82,4 +82,16 @@ input[type="text"]{
 }
 input:focus{
 outline: none;
+}
+
+
+@media print{
+    body *:not(#myForm):not(#myForm *){
+        visibility: hidden;
+    }
+    #myForm{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 }
