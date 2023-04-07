@@ -13,21 +13,20 @@ section{
     left: 40%;
     top: 34%;
     width: 300px;
-    padding: 20px 5px;
+    padding: 20px;
     position: absolute; 
     color: black;
     text-align: center;
     word-wrap: break-word;
     font-weight: bold;
-    /* letter-spacing: 2px; */
 }
 h5{
-    /* font-size: 20px; */
-    margin: 10px;
+    margin: 20px;
     text-transform:capitalize
-    /* line-height: 30px; */
-    /* color: white; */
-    /* text-shadow: 2px 2px 4px #000000; */
+}
+#company{
+    margin-bottom:0 !important ;
+    padding-bottom:0 !important ;
 }
 #bg , #bg2{
     width: 100%;
@@ -90,8 +89,18 @@ outline: none;
         visibility: hidden;
     }
     #myForm{
-        position: absolute;
         top: 0;
         left: 0;
+        margin:0;
+        padding: 0;
+        text-align: center; 
+        display: flex;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        /* margin-top: 15% ; */
+        margin-top: 10% ;
     }
 }
