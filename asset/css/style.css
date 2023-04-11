@@ -71,9 +71,9 @@ video{
 }
 #preview{
     position: absolute;
-    width: 825px;
-    left: 23%;
-    top: 13%;
+    width: 400px;
+    left: 10%;
+    top: 20%;
     border-radius: 50px;
 }
 input[type="text"]{
