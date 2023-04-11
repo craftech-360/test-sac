@@ -22,23 +22,28 @@
     </style>
 </head>
 <body>
+    <!-- <img id="bg2" src="../asset/images/Qr Screen 7.png"  >  -->
+        <div class="child">
+            <video id="preview" ></video><br>
+            <input type="text" id="qr" placeholder="Enter code" autocomplete="off" ><br>
+            <button id="btn2"  type="submit"  >Scan QR</button><br>
+        </div>
+        <div class="child">
+            <section id="myForm" >
+                <h5 id="name" style="text-transform:capitalize"></h5>
+                <h5 id="company" style="text-transform:capitalize"></h5>
+             </section>
+        </div>
+      
     <!-- 1st Screen -->
-    <img id="bg" src="../asset/images/bg.png" alt="">
-    <button id="btn" onclick="getStarted()"  type="submit">Click here</button>
+    <!-- <button id="btn" onclick="getStarted()"  type="submit">Click here</button> -->
 
     <!-- 2nd Screen -->
-    <input type="text" id="qr" placeholder="Enter code" autocomplete="off" style="display: none;">
-    <button id="btn2"  type="submit" style="display: none;" >Scan QR</button>
-    <video id="preview" style="display: none;"></video>
-    <img id="bg2" src="../asset/images/Qr Screen 7.png" alt=""style="display: none;" > 
 
     <!-- 3rd Screen -->
     <!-- <button id="print" type="button"  onclick="window.print()" style="display: none;">Print</button> -->
     <button id="home" type="button"  onclick="location.reload()" style="display: none;"><i class="fa fa-home fa-2x"></i></button>
-    <section id="myForm"style="display: none;" >
-       <h5 id="name" style="text-transform:capitalize"></h5>
-       <h5 id="company" style="text-transform:capitalize"></h5>
-    </section>
+
     <script src="../asset/js/working1.js"></script>
 </body>
 </html>
