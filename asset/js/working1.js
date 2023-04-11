@@ -9,7 +9,7 @@ let scanner = new Instascan.Scanner({
     backgroundScan: false,
     refractoryPeriod: 5000,
     // specify the camera source (0 for back camera, 1 for front camera)
-    facingMode: { exact: "environment" }
+    facingMode: "environment" 
   });
   
   // add a listener for when a code is scanned
