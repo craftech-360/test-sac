@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
-const port = 3000
+const port = 4000
 const User = require('./models/Attendee')
 const fs = require('fs')
 const path = require('path')
@@ -9,44 +9,41 @@ const app = express()
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
 const csvtojson = require('csvtojson')
+const { log } = require('console')
 
 app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile)
 app.use(express.json({limit: '50mb'}));
-app.use(express.urlencoded({limit: '50mb'}));
+app.use(express.urlencoded({extended: true,limit: '50mb'}));
 app.use('/asset', express.static(path.join(__dirname, 'asset')))
 
 app.get('/', function (req, res) {
   res.render("dashboard.ejs");
 });
 
-app.get('/qr', function (req, res) {
+app.get('/page-one', function (req, res) {
+  res.render("page1.ejs");
+});
+
+app.get('/page-two', function (req, res) {
   res.render("page2.ejs");
 });
 
+app.get('/page-three', function (req, res) {
+  res.render("page3.ejs");
+});
+
+app.get('/page-four', function (req, res) {
+  res.render("page4.ejs");
+});
+
 app.use(cors())
-const mongo_URI = 'mongodb+srv://SAC:G8BO4x3rWEDFSYqk@cluster0.btu1pyt.mongodb.net/userlist' // use local one
-// const mongo_URI = 'mongodb://0.0.0.0:27017/employee'
+const mongo_URI = 'mongodb+srv://SAC:G8BO4x3rWEDFSYqk@cluster0.btu1pyt.mongodb.net/userlist'
 mongoose.connect(mongo_URI, {useNewUrlParser:true, useUnifiedTopology:true})
   .then(result => {console.log('Connected To DB')})
   .catch(err => console.error(err))
 
 server.listen(port, () => console.log(`Server started on Port ${port}`))
-
-app.post("/upload", (req, res) => {
-  console.log(req);
-  const data = req.body;
-  // console.log(data.image64);
-  const imageData = data.image64.replace(/^data:image\/\w+;base64,/, '');
-   const buffer = Buffer.from(imageData, 'base64');
-
-  fs.writeFile(`./uploads/img.png`, buffer, err => {
-    if (err) {  res.status(500).send({ error: 'Error saving image' })} 
-    else {  
-      io.emit('navigate')
-      }
-  });
-})
 
 io.on('connection', (socket) => {
   console.log('a user connected');
@@ -65,7 +62,7 @@ io.on('connection', (socket) => {
     asyncCall();
   })
  
-  socket.on('getAll' ,(e) => {``
+  socket.on('getAll' ,(e) => {
     async function asyncCall() {
       const list = await User.count({ "isAttended": false })
       io.emit('count', list)
@@ -77,28 +74,43 @@ io.on('connection', (socket) => {
     asyncCall();
   })
 
-  socket.on('getUrl' ,(e) => {
-    // console.log(e);
-    const imageData = e.replace(/^data:image\/\w+;base64,/, '');
-    const buffer = Buffer.from(imageData, 'base64');
- 
-   fs.writeFile(`./uploads/img.png`, buffer, err => {
-     if (err) {  res.status(500).send({ error: 'Error saving image' })} 
-     else {  
-       io.emit('navigate')
-       }
-   });
-  })
-
-  socket.on('getUser' , (e) => {
-    // console.log(e);
+  socket.on('getUserOne' , (e) => {
+    console.log(e);
     async function asyncCall() {
       await User.updateOne({"uniquecode":e.toLowerCase()},{$set: {"isAttended":true}})
       const result = await User.findOne( { "uniquecode": e.toLowerCase() } )
-      // console.log(result);
-      io.emit('userDetails',result )
+      io.emit('userDetailsOne',result )
+    }
+    asyncCall();
+  })
+
+  socket.on('getUserTwo' , (e) => {
+    console.log(e);
+    async function asyncCall() {
+      await User.updateOne({"uniquecode":e.toLowerCase()},{$set: {"isAttended":true}})
+      const result = await User.findOne( { "uniquecode": e.toLowerCase() } )
+      io.emit('userDetailsTwo',result )
     }
     asyncCall();
   })
   
+  socket.on('getUserThree' , (e) => {
+    console.log(e);
+    async function asyncCall() {
+      await User.updateOne({"uniquecode":e.toLowerCase()},{$set: {"isAttended":true}})
+      const result = await User.findOne( { "uniquecode": e.toLowerCase() } )
+      io.emit('userDetailsThree',result )
+    }
+    asyncCall();
+  })
+
+  socket.on('getUserFour' , (e) => {
+    console.log(e);
+    async function asyncCall() {
+      await User.updateOne({"uniquecode":e.toLowerCase()},{$set: {"isAttended":true}})
+      const result = await User.findOne( { "uniquecode": e.toLowerCase() } )
+      io.emit('userDetailsFour',result )
+    }
+    asyncCall();
+  })
 });
