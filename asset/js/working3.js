@@ -39,11 +39,6 @@ plzField.addEventListener("click", function() {
 });  
 // User Details From DB
 socket.on('userDetailsThree', (e) => {
-    document.getElementById('myForm').style.display = 'block'
-    document.getElementById('home').style.display = 'block'
-    document.getElementById('preview').style.display = 'none'
-    document.getElementById('qr').style.display = 'none'
-    document.getElementById('btn2').style.display = 'none'
     document.getElementById('name').innerText = e.name;
     document.getElementById('company').innerText = e.company;
 })
