@@ -164,9 +164,9 @@
         socket.on('userList',(e) => {
             // location.reload()
             // console.log(e);
-            document.getElementsByTagName("table")[0].innerHTML= "<tr><th>"+`#`+"</th><th>"+`Name`+"</th><th>"+`Company`+"</th><th>"+`Jobtitle`+"</th><th>"+`Phone`+"</th><th>"+`Email`+"</th><th>"+`Status`+"</th><th>"+`Attended`+"</th></tr>"
+            document.getElementsByTagName("table")[0].innerHTML= "<tr><th>"+`#`+"</th><th>"+`Name`+"</th><th>"+`Company`+"</th><th>"+`Jobtitle`+"</th><th>"+`Phone`+"</th><th>"+`Email`+"</th><th>"+`Attended`+"</th></tr>"
             for (let i = 0; i < e.length; i++) {
-                document.getElementsByTagName("table")[0].innerHTML+= "<tr><td>"+(i+btn)+"</td><td>"+e[i].name+"</td><td>"+e[i].company+"</td><td>"+e[i].jobtitle+"</td><td>"+e[i].phone+"</td><td>"+e[i].email+"</td><td>"+e[i].status+"</td><td>"+e[i].isAttended+"</td></tr>"
+                document.getElementsByTagName("table")[0].innerHTML+= "<tr><td>"+(i+btn)+"</td><td>"+e[i].name+"</td><td>"+e[i].company+"</td><td>"+e[i].jobtitle+"</td><td>"+e[i].phone+"</td><td>"+e[i].email+"</td><td>"+e[i].isAttended+"</td></tr>"
         }
         })
     </script>

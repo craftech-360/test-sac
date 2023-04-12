@@ -6,26 +6,6 @@ const attendeeSchema = new Schema({
         type: String,
         required: true
     },
-    status: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true
-    },
-    isAttended: {
-        type: Boolean, 
-        default: false
-    },
-    phone: {
-        type: String,
-        required: true
-    },
-    uniquecode: {
-        type: String,
-        required: true
-    },
     company: {
         type: String,
         required: true
@@ -34,11 +14,26 @@ const attendeeSchema = new Schema({
         type:String,
         required:true
     },
-    shippinglookup:{
+    email: {
         type: String,
-        default:''
-    }
-   
+        required: true
+    },
+    phone: {
+        type: String,
+        required: true
+    },
+    type: {
+        type: String,
+        required: true
+    },
+    uniquecode: {
+        type: String,
+        required: true
+    },
+    isAttended: {
+        type: Boolean, 
+        default: false
+    },
 })
 
 const Attendee = mongoose.model('Attendee', attendeeSchema)
